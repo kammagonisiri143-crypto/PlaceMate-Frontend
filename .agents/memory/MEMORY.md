@@ -1,0 +1,1 @@
+- [PlaceMate API boundary](placemate-api-boundary.md) — the backend is developed independently; don't invent endpoint contracts or add a parallel database.

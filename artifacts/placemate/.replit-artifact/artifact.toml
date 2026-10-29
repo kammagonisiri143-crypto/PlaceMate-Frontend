@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "PlaceMate"
+description = "A responsive campus placement and career intelligence frontend for students, recruiters, and placement administrators, with role-specific dashboards and a clearly labeled demo mode."
+version = "1.0.0"
+id = "artifacts/placemate"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19782
+
+[services.development]
+run = "pnpm --filter @workspace/placemate run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/placemate", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/placemate/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19782"
+BASE_PATH = "/"
